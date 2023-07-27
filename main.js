@@ -24,19 +24,20 @@ db.connect((err) => {
 app.set("view engine", "ejs");
 
 // Route to display the data
-app.get("/", (req, res) => {
-    const query = "SELECT * FROM users"; // Replace 'users' with your table name
+// app.get("/", (req, res) => {
+//     const query = "SELECT * FROM users"; // Replace 'users' with your table name
 
-    db.query(query, (err, result) => {
-        if (err) {
-            console.error("Error fetching data from the database:", err.message);
-            return;
-        }
-        res.render("index", { users: result }); // Pass the fetched data to the "index.ejs" template
-    });
-});
+//     db.query(query, (err, result) => {
+//         if (err) {
+//             console.error("Error fetching data from the database:", err.message);
+//             return;
+//         }
+//         res.render("index", { users: result }); // Pass the fetched data to the "index.ejs" template
+//     });
+// });
 
 // Route to display the search page
+
 app.get("/search", (req, res) => {
     res.render("search");
 });
