@@ -58,8 +58,8 @@ app.get("/search/:keyword", (req, res) => {
 
 
 // Start the server
-// const PORT = 3000; // Change the port number if needed
-// app.listen(PORT, () => {
-//     console.log(`Server is running on http://localhost:${PORT}`);
-// });
+const PORT = 3000; // Change the port number if needed
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
 
