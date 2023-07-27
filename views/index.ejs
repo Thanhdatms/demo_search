@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User List</title>
+    <link href= static/button.css rel=" stylesheet" />
+</head>
+<body>
+    <h1>User List</h1>
+    <ul>
+        <% users.forEach(user => { %>
+            <li>
+                <strong>Name:</strong> <%= user.name %> | 
+                <strong>Email:</strong> <%= user.email %>
+            </li>
+        <% }); %>
+
+            <button onclick="redirectToSearch()">Go to Search</button>
+
+        <script>
+            function redirectToSearch() {
+                window.location.href = "/search";
+            }
+        </script>
+    </ul>
+</body>
+</html>
