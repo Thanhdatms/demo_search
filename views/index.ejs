@@ -2,19 +2,62 @@
 <html>
 <head>
     <title>User List</title>
-    <link href= static/button.css rel=" stylesheet" />
+    <style>
+        button {
+            padding: 0;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            font-size: inherit;
+            }
+
+            .my-button {
+            display: inline-block; 
+            background-color: #007bff; 
+            color: #fff;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: 2px solid #007bff; 
+            }
+
+            .my-button:hover {
+            background-color: #0056b3; 
+            }
+	</style> 
+    
+
 </head>
 <body>
-    <h1>User List</h1>
+    
     <ul>
-        <% users.forEach(user => { %>
-            <li>
-                <strong>Name:</strong> <%= user.name %> | 
-                <strong>Email:</strong> <%= user.email %>
-            </li>
-        <% }); %>
+        
+        <center>
+            <h1>DEMO SEARCH BAR</h1>
+            <h1>This is the list of Users from database</h1>
+            <br>
+            <br>
+            <br>
+            <% users.forEach(user => { %>
+                <li>
+                    <strong>Name:</strong> <%= user.name %> | 
+                    <strong>Email:</strong> <%= user.email %>
+                </li>
+            <% }); %>
+        </center>
+        
 
-            <button onclick="redirectToSearch()">Go to Search</button>
+        <center>
+            <br>
+            <br>
+            <br>
+            <div class="my-button">
+              <button onclick="redirectToSearch()">Go to Search</button>
+            </div>
+        </center>
+        
+        <br>
+        <br>
 
         <script>
             function redirectToSearch() {

@@ -2,6 +2,11 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql");
 const ejs = require("ejs");
+const env = require("dotenv")
+
+// env.config({
+//     path: ".env"
+// })
 
 const db = mysql.createConnection({
     host: "dangdatdatabase.cixu2ufy0ujz.ap-southeast-2.rds.amazonaws.com",
@@ -58,8 +63,9 @@ app.get("/search/:keyword", (req, res) => {
 });
 
 
-// Start the server
-const PORT = 3000; // Change the port number if needed
+
+const PORT = process.env.POST || 3000; 
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
