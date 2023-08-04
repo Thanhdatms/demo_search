@@ -57,7 +57,28 @@ app.get("/search/:keyword", (req, res) => {
     });
 });
 
+app.use(express.urlencoded({ extended: true }));
 
+// Route to display the registration form
+app.get("/register", (req, res) => {
+    res.render("register");
+});
+
+// Route to handle user registration form submission
+app.post("/register", (req, res) => {
+    const { name, email, age, gender, country } = req.body;
+    const insertQuery = "INSERT INTO users (name, email, age, gender, country) VALUES (?, ?, ?, ?, ?)";
+
+    db.query(insertQuery, [name, email, age, gender, country], (err, result) => {
+        if (err) {
+            console.error("Error inserting data into the database:", err.message);
+            res.status(500).json({ error: "Internal Server Error" });
+            return;
+        }
+        console.log("User registered:", name);
+        res.redirect("/"); // Redirect to the homepage or any other page you prefer
+    });
+});
 
 const PORT = process.env.PORT || 3000; 
 
