@@ -23,6 +23,7 @@ db.connect((err) => {
 // Set EJS as the view engine
 app.set("view engine", "ejs");
 
+app.use(express.static("public"));
 // Route to display the data
 app.get("/", (req, res) => {
     const query = "SELECT * FROM users"; // Replace 'users' with your table name
@@ -78,6 +79,14 @@ app.post("/register", (req, res) => {
         console.log("User registered:", name);
         res.redirect("/"); // Redirect to the homepage or any other page you prefer
     });
+});
+
+app.get("/TX_report", (req, res) => {
+    res.render("TX_report");
+});
+
+app.get("/CA_report", (req, res) => {
+    res.render("CA_report");
 });
 
 const PORT = process.env.PORT || 3000; 

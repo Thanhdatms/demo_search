@@ -24,6 +24,18 @@
             .my-button:hover {
             background-color: #0056b3; 
             }
+            .button-container {
+            display: flex;
+            justify-content: space-between;
+            }
+
+            .button {
+                padding: 10px 20px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
 	</style> 
     
 
@@ -31,13 +43,13 @@
 <body>
     
     <ul>
-        
+        <center>
+            <img src="/images/demo.jpeg">
+        </center>
+
         <center>
             <h1>DEMO SEARCH BAR</h1>
             <h1>This is the list of Users from database</h1>
-            <br>
-            <br>
-            <br>
             <% users.forEach(user => { %>
                 <li>
                     <strong>Name:</strong> <%= user.name %> | 
@@ -46,11 +58,8 @@
             <% }); %>
         </center>
         
-
+        <br>
         <center>
-            <br>
-            <br>
-            <br>
             <div class="my-button">
               <button onclick="redirectToSearch()">Go to Search</button>
             </div>
@@ -63,6 +72,14 @@
             </div>
         </center>
 
+            <br>
+            <div class="button-container">
+                <center>
+                    <button class="button" onclick="redirectToTXreport()">TX_report</button>
+                    <button class="button" onclick="redirectToCAreport()">CA_report</button>
+                </center>
+                
+            </div>
         
         <br>
         <br>
@@ -73,6 +90,12 @@
 
             function redirectToRegister(){
                 window.location.href = "/register";
+            }
+            function redirectToTXreport(){
+                window.location.href = "/TX_report";
+            }
+            function redirectToCAreport(){
+                window.location.href = "/CA_report";
             }
         </script>
     </ul>
