@@ -280,7 +280,7 @@ app.get('/CA_report', (req, res) => {
 
 const server = http.createServer(app); // Create an HTTP server using the Express app
 
-const PORT = 3000; // Set the port number to listen on (port 80)
+const PORT = 80; // Set the port number to listen on (port 80)
 
 server.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
