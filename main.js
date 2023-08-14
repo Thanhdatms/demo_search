@@ -95,58 +95,154 @@
 //     console.log(`Server is running on http://localhost:${PORT}`);
 // });
 
+// const http = require('http'); // Import the 'http' module
+// const app = require('./your-app'); // Import your express or HTTP app
+
+// const express = require("express");
+// const mysql = require("mysql");
+// const ejs = require("ejs");
+
+// const app = express();
+
+// const db = mysql.createConnection({
+//     host: "dangdatdatabase.cixu2ufy0ujz.ap-southeast-2.rds.amazonaws.com",
+//     port: "3306",
+//     user: "DatDang", 
+//     password: "Dat1234nam",
+//     database: "demoDangDat",
+// });
+
+// db.connect((err) => {
+//     if (err) {
+//         console.log("Error connecting to the database:", err.message);
+//         return;
+//     }
+//     console.log("Database is connected");
+// });
+
+// app.set("view engine", "ejs");
+// app.use(express.static("public"));
+
+// app.get("/", (req, res) => {
+//     const query = "SELECT * FROM users";
+
+//     db.query(query, (err, result) => {
+//         if (err) {
+//             console.error("Error fetching data from the database:", err.message);
+//             return;
+//         }
+//         res.render("index", { users: result });
+//     });
+// });
+
+// app.get("/search", (req, res) => {
+//     res.render("search");
+// });
+
+// app.get("/search/:keyword", (req, res) => {
+//     const keyword = req.params.keyword;
+//     const query = "SELECT * FROM users WHERE name LIKE ?";
+
+//     db.query(query, [`%${keyword}%`], (err, result) => {
+//         if (err) {
+//             console.error("Error fetching data from the database:", err.message);
+//             res.status(500).json({ error: "Internal Server Error" });
+//             return;
+//         }
+//         res.json(result);
+//     });
+// });
+
+// app.use(express.urlencoded({ extended: true }));
+
+// app.get("/register", (req, res) => {
+//     res.render("register");
+// });
+
+// app.post("/register", (req, res) => {
+//     const { name, email, age, gender, country } = req.body;
+//     const insertQuery = "INSERT INTO users (name, email, age, gender, country) VALUES (?, ?, ?, ?, ?)";
+
+//     db.query(insertQuery, [name, email, age, gender, country], (err, result) => {
+//         if (err) {
+//             console.error("Error inserting data into the database:", err.message);
+//             res.status(500).json({ error: "Internal Server Error" });
+//             return;
+//         }
+//         console.log("User registered:", name);
+//         res.redirect("/");
+//     });
+// });
+
+// app.get("/TX_report", (req, res) => {
+//     res.render("TX_report");
+// });
+
+// app.get("/CA_report", (req, res) => {
+//     res.render("CA_report");
+// });
+
+
+
+
+// const server = http.createServer(app); // Create an HTTP server using your app
+
+// const PORT = 80; // Set the port number to listen on (port 80)
+
+// server.listen(PORT, () => {
+//     console.log(`Server is running on http://localhost:${PORT}`);
+// });
+
 const http = require('http'); // Import the 'http' module
-const app = require('./your-app'); // Import your express or HTTP app
+const express = require('express'); // Import the 'express' module
+const mysql = require('mysql');
+const ejs = require('ejs');
 
-const express = require("express");
-const mysql = require("mysql");
-const ejs = require("ejs");
-
-const app = express();
+const app = express(); // Create an instance of the Express application
 
 const db = mysql.createConnection({
-    host: "dangdatdatabase.cixu2ufy0ujz.ap-southeast-2.rds.amazonaws.com",
-    port: "3306",
-    user: "DatDang", 
-    password: "Dat1234nam",
-    database: "demoDangDat",
+    host: 'dangdatdatabase.cixu2ufy0ujz.ap-southeast-2.rds.amazonaws.com',
+    port: '3306',
+    user: 'DatDang', 
+    password: 'Dat1234nam',
+    database: 'demoDangDat',
 });
 
 db.connect((err) => {
     if (err) {
-        console.log("Error connecting to the database:", err.message);
+        console.log('Error connecting to the database:', err.message);
         return;
     }
-    console.log("Database is connected");
+    console.log('Database is connected');
 });
 
-app.set("view engine", "ejs");
-app.use(express.static("public"));
+app.set('view engine', 'ejs');
+app.use(express.static('public'));
 
-app.get("/", (req, res) => {
-    const query = "SELECT * FROM users";
+app.get('/', (req, res) => {
+    const query = 'SELECT * FROM users';
 
     db.query(query, (err, result) => {
         if (err) {
-            console.error("Error fetching data from the database:", err.message);
+            console.error('Error fetching data from the database:', err.message);
             return;
         }
-        res.render("index", { users: result });
+        res.render('index', { users: result });
     });
 });
 
-app.get("/search", (req, res) => {
-    res.render("search");
+app.get('/search', (req, res) => {
+    res.render('search');
 });
 
-app.get("/search/:keyword", (req, res) => {
+app.get('/search/:keyword', (req, res) => {
     const keyword = req.params.keyword;
-    const query = "SELECT * FROM users WHERE name LIKE ?";
+    const query = 'SELECT * FROM users WHERE name LIKE ?';
 
     db.query(query, [`%${keyword}%`], (err, result) => {
         if (err) {
-            console.error("Error fetching data from the database:", err.message);
-            res.status(500).json({ error: "Internal Server Error" });
+            console.error('Error fetching data from the database:', err.message);
+            res.status(500).json({ error: 'Internal Server Error' });
             return;
         }
         res.json(result);
@@ -155,39 +251,36 @@ app.get("/search/:keyword", (req, res) => {
 
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/register", (req, res) => {
-    res.render("register");
+app.get('/register', (req, res) => {
+    res.render('register');
 });
 
-app.post("/register", (req, res) => {
+app.post('/register', (req, res) => {
     const { name, email, age, gender, country } = req.body;
-    const insertQuery = "INSERT INTO users (name, email, age, gender, country) VALUES (?, ?, ?, ?, ?)";
+    const insertQuery = 'INSERT INTO users (name, email, age, gender, country) VALUES (?, ?, ?, ?, ?)';
 
     db.query(insertQuery, [name, email, age, gender, country], (err, result) => {
         if (err) {
-            console.error("Error inserting data into the database:", err.message);
-            res.status(500).json({ error: "Internal Server Error" });
+            console.error('Error inserting data into the database:', err.message);
+            res.status(500).json({ error: 'Internal Server Error' });
             return;
         }
-        console.log("User registered:", name);
-        res.redirect("/");
+        console.log('User registered:', name);
+        res.redirect('/');
     });
 });
 
-app.get("/TX_report", (req, res) => {
-    res.render("TX_report");
+app.get('/TX_report', (req, res) => {
+    res.render('TX_report');
 });
 
-app.get("/CA_report", (req, res) => {
-    res.render("CA_report");
+app.get('/CA_report', (req, res) => {
+    res.render('CA_report');
 });
 
+const server = http.createServer(app); // Create an HTTP server using the Express app
 
-
-
-const server = http.createServer(app); // Create an HTTP server using your app
-
-const PORT = 80; // Set the port number to listen on (port 80)
+const PORT = 3000; // Set the port number to listen on (port 80)
 
 server.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
