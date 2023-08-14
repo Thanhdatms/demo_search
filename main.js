@@ -182,7 +182,7 @@ app.get("/CA_report", (req, res) => {
 
 const server = http.createServer(app);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 80;
 
 server.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
