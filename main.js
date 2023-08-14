@@ -95,7 +95,9 @@
 //     console.log(`Server is running on http://localhost:${PORT}`);
 // });
 
-const http = require("http");
+const http = require('http'); // Import the 'http' module
+const app = require('./your-app'); // Import your express or HTTP app
+
 const express = require("express");
 const mysql = require("mysql");
 const ejs = require("ejs");
@@ -180,9 +182,12 @@ app.get("/CA_report", (req, res) => {
     res.render("CA_report");
 });
 
-const server = http.createServer(app);
 
-const PORT = process.env.PORT || 80;
+
+
+const server = http.createServer(app); // Create an HTTP server using your app
+
+const PORT = 80; // Set the port number to listen on (port 80)
 
 server.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
